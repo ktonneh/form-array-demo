@@ -7,7 +7,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+
   customerInfo : FormGroup;
 
   constructor(private formBuilder : FormBuilder){}
@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
       username : [],
       email : [],
       products : this.formBuilder.array([])
-    })
+    });
     this.setDefaultData();
   }
 
   addProduct(name = "", desc = ""){
-    let products = this.customerInfo.get('products') as FormArray;
+    const products = this.customerInfo.get('products') as FormArray;
     products.push(this.formBuilder.group({
       name : [name, [Validators.required]],
       description : [desc, [Validators.required]]
